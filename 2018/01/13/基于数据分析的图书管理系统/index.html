@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="nodejs,mongodb," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="马俊昌的个人博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="基于数据分析的图书管理系统(原创-全栈项目)基于Vue全家桶(2.x)+NodeJs+Express+MongoDB+ES6+iview制作的图书管理系统，通过该系统来学习当下最流行的大框架和技术，采用前后端分类的开发方式，Vue全家桶（2.x）全部涉及。 图书馆项目地址-https://github.com/majunchang/node-library技术栈前端 Vue: 用于构建用户界面的M">
+<meta name="keywords" content="nodejs,mongodb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于数据分析的图书管理系统">
+<meta property="og:url" content="https://majunchang.github.io/2018/01/13/基于数据分析的图书管理系统/index.html">
+<meta property="og:site_name" content="马俊昌的个人博客">
+<meta property="og:description" content="基于数据分析的图书管理系统(原创-全栈项目)基于Vue全家桶(2.x)+NodeJs+Express+MongoDB+ES6+iview制作的图书管理系统，通过该系统来学习当下最流行的大框架和技术，采用前后端分类的开发方式，Vue全家桶（2.x）全部涉及。 图书馆项目地址-https://github.com/majunchang/node-library技术栈前端 Vue: 用于构建用户界面的M">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5703029-c2313aaabe07a1f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5703029-e63712d3143900c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5703029-b1e928eec2dac035.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5703029-96c30091acd84714.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5703029-42b383bc477fa00b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5703029-55ac86220e31077a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5703029-f80c2a427b18a43a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5703029-dbaf941d90a8f2f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5703029-e0587f64bd83ff97.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5703029-a1609c810cd1757b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/5703029-271ab218f761a24b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-01-13T11:56:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于数据分析的图书管理系统">
+<meta name="twitter:description" content="基于数据分析的图书管理系统(原创-全栈项目)基于Vue全家桶(2.x)+NodeJs+Express+MongoDB+ES6+iview制作的图书管理系统，通过该系统来学习当下最流行的大框架和技术，采用前后端分类的开发方式，Vue全家桶（2.x）全部涉及。 图书馆项目地址-https://github.com/majunchang/node-library技术栈前端 Vue: 用于构建用户界面的M">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/5703029-c2313aaabe07a1f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"Transition variants":"bounceIn","post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://majunchang.github.io/2018/01/13/基于数据分析的图书管理系统/"/>
+
+
+
+
+
+  <title>基于数据分析的图书管理系统 | 马俊昌的个人博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/majunchang"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">马俊昌的个人博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">念念不忘，必有回想。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://majunchang.github.io/2018/01/13/基于数据分析的图书管理系统/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="马俊昌">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://fuss10.elemecdn.com/d/94/b95802605bb1531cd200fef349753png.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="马俊昌的个人博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">基于数据分析的图书管理系统</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-13T19:54:21+08:00">
+                2018-01-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/01/13/基于数据分析的图书管理系统/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2018/01/13/基于数据分析的图书管理系统/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2018/01/13/基于数据分析的图书管理系统/" class="leancloud_visitors" data-flag-title="基于数据分析的图书管理系统">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+                 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="基于数据分析的图书管理系统-原创-全栈项目"><a href="#基于数据分析的图书管理系统-原创-全栈项目" class="headerlink" title="基于数据分析的图书管理系统(原创-全栈项目)"></a>基于数据分析的图书管理系统(原创-全栈项目)</h1><p>基于<strong>Vue全家桶(2.x)+NodeJs+Express+MongoDB+ES6+iview</strong>制作的图书管理系统，通过该系统来学习当下最流行的大框架和技术，采用前后端分类的开发方式，Vue全家桶（2.x）全部涉及。</p>
+<h2 id="图书馆项目地址-https-github-com-majunchang-node-library"><a href="#图书馆项目地址-https-github-com-majunchang-node-library" class="headerlink" title="图书馆项目地址-https://github.com/majunchang/node-library"></a><a href="https://github.com/majunchang/node-library" target="_blank" rel="noopener">图书馆项目地址-https://github.com/majunchang/node-library</a></h2><h2 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h2><h4 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h4><ul>
+<li>Vue: 用于构建用户界面的MVVM框架，它的核心是<strong>实时响应的双向数据绑定和组件系统</strong></li>
+<li>vue-router: 为vue提供的路由系统，主要体现在路由的跳转，动效的过渡以及对于路由的限制等</li>
+<li>vuex: Vue的集中状态管理，在多个组件共享某些状态时非常便捷，降低了组件开发传递数据的复杂度</li>
+<li>axios： <strong>基于 Promise 的 HTTP 请求客户端，可同时在浏览器和 node.js 中使用</strong>，该项目中前端所有请求都是通过axios来实现数据接收和页面渲染。</li>
+<li>ES6：ECMAScript的新一代语法，模块化，解构赋值，Promise，class等方法，使得开发变得更加简单。</li>
+</ul>
+<h4 id="后端"><a href="#后端" class="headerlink" title="后端"></a>后端</h4><ul>
+<li>Node.js: 整个系统后端通过 Node.js 进行实现，通过 Express 框架实现后端的 REST 接口，并以 json 的形式进行输出，对于普通的post请求和文件上传类的post请求 使用body-parser中间件和formidable插件进行处理。</li>
+</ul>
+<h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><ul>
+<li>mongoDB: NoSQL数据库，使用mongoose进行数据库的连接和对于数据库的快速建模操作</li>
+</ul>
+<h2 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h2><ol>
+<li>掌握了在项目中运用Vue全家桶解决各类问题。</li>
+<li>熟悉了vue父子组件之间数据的传递和交互，熟悉了不相关的组件之间如何进行行为的触发和传值</li>
+<li>掌握了如何在vue中 使用相关的ui框架和第三方插件</li>
+<li>熟悉了组件化、模块化的开发思维，体会到了前后端分类开发的好处</li>
+<li>加深了对nodejs和相关模块(path,nodemailer等)的理解和掌握</li>
+<li>掌握了nodejs+mongoose操作数据库的一套完整的增删改查方法，体会到了图形统计的作用。</li>
+</ol>
+<h2 id="项目截图"><a href="#项目截图" class="headerlink" title="项目截图"></a>项目截图</h2><h4 id="首页"><a href="#首页" class="headerlink" title="首页"></a>首页</h4><p><img src="http://upload-images.jianshu.io/upload_images/5703029-c2313aaabe07a1f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mark"></p>
+<h4 id="注册页"><a href="#注册页" class="headerlink" title="注册页"></a>注册页</h4><p><img src="http://upload-images.jianshu.io/upload_images/5703029-e63712d3143900c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mark"></p>
+<h4 id="忘记密码页"><a href="#忘记密码页" class="headerlink" title="忘记密码页"></a>忘记密码页</h4><p><img src="http://upload-images.jianshu.io/upload_images/5703029-b1e928eec2dac035.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mark"></p>
+<h4 id="首页-1"><a href="#首页-1" class="headerlink" title="首页"></a>首页</h4><p><img src="http://upload-images.jianshu.io/upload_images/5703029-96c30091acd84714.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mark"></p>
+<h4 id="图书总览页"><a href="#图书总览页" class="headerlink" title="图书总览页"></a>图书总览页</h4><p><img src="http://upload-images.jianshu.io/upload_images/5703029-42b383bc477fa00b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mark"></p>
+<h4 id="分类总览页"><a href="#分类总览页" class="headerlink" title="分类总览页"></a>分类总览页</h4><p><img src="http://upload-images.jianshu.io/upload_images/5703029-55ac86220e31077a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mark"></p>
+<h4 id="添加书籍页"><a href="#添加书籍页" class="headerlink" title="添加书籍页"></a>添加书籍页</h4><p><img src="http://upload-images.jianshu.io/upload_images/5703029-f80c2a427b18a43a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mark"></p>
+<h4 id="借书列表页"><a href="#借书列表页" class="headerlink" title="借书列表页"></a>借书列表页</h4><p><img src="http://upload-images.jianshu.io/upload_images/5703029-dbaf941d90a8f2f4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mark"></p>
+<h4 id="数据分析页"><a href="#数据分析页" class="headerlink" title="数据分析页"></a>数据分析页</h4><p><img src="http://upload-images.jianshu.io/upload_images/5703029-e0587f64bd83ff97.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mark"><br><img src="http://upload-images.jianshu.io/upload_images/5703029-a1609c810cd1757b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mark"></p>
+<h4 id="个人信息页"><a href="#个人信息页" class="headerlink" title="个人信息页"></a>个人信息页</h4><p><img src="http://upload-images.jianshu.io/upload_images/5703029-271ab218f761a24b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="mark"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+<div>
+  
+    <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+
+  
+</div>
+
+    
+ 
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nodejs/" rel="tag">
+              <i class='fa fa-tag'></i>
+             nodejs</a>
+          
+            <a href="/tags/mongodb/" rel="tag">
+              <i class='fa fa-tag'></i>
+             mongodb</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/12/19/cookie和web存储的比较/" rel="next" title="cookie和web存储的比较">
+                <i class="fa fa-chevron-left"></i> cookie和web存储的比较
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/04/vue总结/" rel="prev" title="vue总结">
+                vue总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://fuss10.elemecdn.com/d/94/b95802605bb1531cd200fef349753png.png"
+                alt="马俊昌" />
+            
+              <p class="site-author-name" itemprop="name">马俊昌</p>
+              <p class="site-description motion-element" itemprop="description">路虽远，不行不至，事虽难，不做不成。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">32</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/majunchang" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="13012270529@163.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/995de587e99e" target="_blank" title="简书">
+                      
+                        <i class="fa fa-fw fa-book"></i>简书</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基于数据分析的图书管理系统-原创-全栈项目"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x57FA;&#x4E8E;&#x6570;&#x636E;&#x5206;&#x6790;&#x7684;&#x56FE;&#x4E66;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;-&#x539F;&#x521B;-&#x5168;&#x6808;&#x9879;&#x76EE;" class="headerlink" title="&#x57FA;&#x4E8E;&#x6570;&#x636E;&#x5206;&#x6790;&#x7684;&#x56FE;&#x4E66;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;(&#x539F;&#x521B;-&#x5168;&#x6808;&#x9879;&#x76EE;)"></a>&#x57FA;&#x4E8E;&#x6570;&#x636E;&#x5206;&#x6790;&#x7684;&#x56FE;&#x4E66;&#x7BA1;&#x7406;&#x7CFB;&#x7EDF;(&#x539F;&#x521B;-&#x5168;&#x6808;&#x9879;&#x76EE;)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#图书馆项目地址-https-github-com-majunchang-node-library"><span class="nav-number">1.1.</span> <span class="nav-text"><a href="#&#x56FE;&#x4E66;&#x9986;&#x9879;&#x76EE;&#x5730;&#x5740;-https-github-com-majunchang-node-library" class="headerlink" title="&#x56FE;&#x4E66;&#x9986;&#x9879;&#x76EE;&#x5730;&#x5740;-https://github.com/majunchang/node-library"></a><a href="https://github.com/majunchang/node-library" target="_blank" rel="noopener">&#x56FE;&#x4E66;&#x9986;&#x9879;&#x76EE;&#x5730;&#x5740;-https://github.com/majunchang/node-library</a></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#技术栈"><span class="nav-number">1.2.</span> <span class="nav-text"><a href="#&#x6280;&#x672F;&#x6808;" class="headerlink" title="&#x6280;&#x672F;&#x6808;"></a>&#x6280;&#x672F;&#x6808;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前端"><span class="nav-number">1.2.0.1.</span> <span class="nav-text"><a href="#&#x524D;&#x7AEF;" class="headerlink" title="&#x524D;&#x7AEF;"></a>&#x524D;&#x7AEF;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#后端"><span class="nav-number">1.2.0.2.</span> <span class="nav-text"><a href="#&#x540E;&#x7AEF;" class="headerlink" title="&#x540E;&#x7AEF;"></a>&#x540E;&#x7AEF;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库"><span class="nav-number">1.2.0.3.</span> <span class="nav-text"><a href="#&#x6570;&#x636E;&#x5E93;" class="headerlink" title="&#x6570;&#x636E;&#x5E93;"></a>&#x6570;&#x636E;&#x5E93;</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#收获"><span class="nav-number">1.3.</span> <span class="nav-text"><a href="#&#x6536;&#x83B7;" class="headerlink" title="&#x6536;&#x83B7;"></a>&#x6536;&#x83B7;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目截图"><span class="nav-number">1.4.</span> <span class="nav-text"><a href="#&#x9879;&#x76EE;&#x622A;&#x56FE;" class="headerlink" title="&#x9879;&#x76EE;&#x622A;&#x56FE;"></a>&#x9879;&#x76EE;&#x622A;&#x56FE;</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#首页"><span class="nav-number">1.4.0.1.</span> <span class="nav-text"><a href="#&#x9996;&#x9875;" class="headerlink" title="&#x9996;&#x9875;"></a>&#x9996;&#x9875;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注册页"><span class="nav-number">1.4.0.2.</span> <span class="nav-text"><a href="#&#x6CE8;&#x518C;&#x9875;" class="headerlink" title="&#x6CE8;&#x518C;&#x9875;"></a>&#x6CE8;&#x518C;&#x9875;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#忘记密码页"><span class="nav-number">1.4.0.3.</span> <span class="nav-text"><a href="#&#x5FD8;&#x8BB0;&#x5BC6;&#x7801;&#x9875;" class="headerlink" title="&#x5FD8;&#x8BB0;&#x5BC6;&#x7801;&#x9875;"></a>&#x5FD8;&#x8BB0;&#x5BC6;&#x7801;&#x9875;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#首页-1"><span class="nav-number">1.4.0.4.</span> <span class="nav-text"><a href="#&#x9996;&#x9875;-1" class="headerlink" title="&#x9996;&#x9875;"></a>&#x9996;&#x9875;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图书总览页"><span class="nav-number">1.4.0.5.</span> <span class="nav-text"><a href="#&#x56FE;&#x4E66;&#x603B;&#x89C8;&#x9875;" class="headerlink" title="&#x56FE;&#x4E66;&#x603B;&#x89C8;&#x9875;"></a>&#x56FE;&#x4E66;&#x603B;&#x89C8;&#x9875;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分类总览页"><span class="nav-number">1.4.0.6.</span> <span class="nav-text"><a href="#&#x5206;&#x7C7B;&#x603B;&#x89C8;&#x9875;" class="headerlink" title="&#x5206;&#x7C7B;&#x603B;&#x89C8;&#x9875;"></a>&#x5206;&#x7C7B;&#x603B;&#x89C8;&#x9875;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加书籍页"><span class="nav-number">1.4.0.7.</span> <span class="nav-text"><a href="#&#x6DFB;&#x52A0;&#x4E66;&#x7C4D;&#x9875;" class="headerlink" title="&#x6DFB;&#x52A0;&#x4E66;&#x7C4D;&#x9875;"></a>&#x6DFB;&#x52A0;&#x4E66;&#x7C4D;&#x9875;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#借书列表页"><span class="nav-number">1.4.0.8.</span> <span class="nav-text"><a href="#&#x501F;&#x4E66;&#x5217;&#x8868;&#x9875;" class="headerlink" title="&#x501F;&#x4E66;&#x5217;&#x8868;&#x9875;"></a>&#x501F;&#x4E66;&#x5217;&#x8868;&#x9875;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#数据分析页"><span class="nav-number">1.4.0.9.</span> <span class="nav-text"><a href="#&#x6570;&#x636E;&#x5206;&#x6790;&#x9875;" class="headerlink" title="&#x6570;&#x636E;&#x5206;&#x6790;&#x9875;"></a>&#x6570;&#x636E;&#x5206;&#x6790;&#x9875;</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#个人信息页"><span class="nav-number">1.4.0.10.</span> <span class="nav-text"><a href="#&#x4E2A;&#x4EBA;&#x4FE1;&#x606F;&#x9875;" class="headerlink" title="&#x4E2A;&#x4EBA;&#x4FE1;&#x606F;&#x9875;"></a>&#x4E2A;&#x4EBA;&#x4FE1;&#x606F;&#x9875;</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">马俊昌</span>
+
+  
+</div>
+
+
+
+  <div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+ 
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://majunchang.github.io/2018/01/13/基于数据分析的图书管理系统/';
+          this.page.identifier = '2018/01/13/基于数据分析的图书管理系统/';
+          this.page.title = '基于数据分析的图书管理系统';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("5jPaOaiarmGUljrtCYBVoDM2-gzGzoHsz", "PljSqLQ0HENgdygGlja6JGMW");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"live2d-widget-model-wanko"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"log":false});</script></body>
+</html>
